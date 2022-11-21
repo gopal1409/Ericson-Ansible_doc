@@ -10,6 +10,8 @@ sudo -i
   9  hostnamectl set-hostname --static ubuntu
   #copy the public key from the master machine and paste it at the end
    10  vi /root/.ssh/authorized_keys
+   nano /root/.ssh/authorized_keys
+   #press ctrl x y and enter
    ip a
    ###3login to the redhat machine
    sudo -i
