@@ -1,0 +1,4 @@
+ 42  git clone https://github.com/gopal1409/Erricson-Nov_ansible_manifest.git
+   43  cd Erricson-Nov_ansible_manifest/
+   44  ls
+   45  ansible all -m ping
