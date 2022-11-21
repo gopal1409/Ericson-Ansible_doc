@@ -1,0 +1,22 @@
+  70  ansible ubuntu -m command -a uptime
+   71  uptime
+   72  ansible all -m command -a "df -h"
+   73  ansible all -m command -a "free -m"
+   74  ansible all -m command -a "cat /proc/meminfo"
+   75  ansible all -m command -a "cat /etc/group"
+   76  ansible ubuntu -m file -a "path=/tmp/x state=director mode=0755"
+   77  ansible ubuntu -m file -a "path=/tmp/x state=directory mode=0755"
+   78  ansible ubuntu -m group -a "name=weblogic state=present"
+   79  ansible ubuntu -m user -a "name=weblogic group=weblogic createhome=yes"
+###how to modify the directory permission we created earlier
+ssh root@ubuntu
+cd /tmp
+ls -la
+exit
+######
+  82  ansible ubuntu -m file -a "path=/tmp/x group=weblogic owner=weblogic"
+  ssh root@ubuntu
+cd /tmp
+ls -la
+exit
+  
