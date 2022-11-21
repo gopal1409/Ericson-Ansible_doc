@@ -6,11 +6,13 @@ sudo -i
    12  ssh-keygen -t rsa
 14  cat /root/.ssh/id_rsa.pub
 ##3login to the ubuntu machine #change the hostname
+sudo -i
   9  hostnamectl set-hostname --static ubuntu
   #copy the public key from the master machine and paste it at the end
    10  vi /root/.ssh/authorized_keys
    ip a
    ###3login to the redhat machine
+   sudo -i
    9  hostnamectl set-hostname --static redhat
   #copy the public key from the master machine and paste it at the end
    10  vi /root/.ssh/authorized_keys
