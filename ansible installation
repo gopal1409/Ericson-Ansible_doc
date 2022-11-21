@@ -18,6 +18,8 @@ sudo -i
    9  hostnamectl set-hostname --static redhat
   #copy the public key from the master machine and paste it at the end
    10  vi /root/.ssh/authorized_keys
+   nano /root/.ssh/authorized_keys
+   #press ctrl x y and enter
    ip a
 ###go back to master machine copy the pvt ip inside hostfile
 root@ip-172-31-6-168:~# cat /etc/hosts
