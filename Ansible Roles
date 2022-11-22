@@ -1,0 +1,11 @@
+apt install tree
+ 197  apt install tree
+  198  ansible-galaxy init jdk
+  199  ls
+  200  tree jdk
+  201  cat jdk/defaults/main.yml
+  202  cat jdk/handlers/main.yml
+  203  cat jdk/meta/main.yml
+  204  ls
+  205  cat jdk/tasks/main.yml
+  206  tree jdk
