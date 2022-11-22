@@ -9,3 +9,21 @@ apt install tree
   204  ls
   205  cat jdk/tasks/main.yml
   206  tree jdk
+  ###create an install jdkl
+   209  nano jdk/tasks/install-jdk.yml
+   ###copy paste the below content
+   ---
+   - name: install openjdk ubuntu
+     package:
+          name: default-jdk
+          update_cache: yes
+          state: present
+  ###to execute the role we will create another file install.yml
+  ---
+  -
+    hosts: ubuntu
+    roles:
+      - jdk
+  ###now we will execute the role using install.yml
+  ansible-playbook install.yml
+
