@@ -33,3 +33,27 @@ apt install tree
   - import_tasks: install-jdk.yml
   ###then re run the playbook
 ansible-playbook install.yml
+###create an user role
+ 229  ansible-galaxy init user
+  230  nano user/tasks/main.yml
+---
+# tasks file for user
+- name: create a group tomcat
+  group:
+          name: tomcat
+          state: present
+- name: create user tomcat
+  user:
+          name: tomcat
+          state: present
+          group: tomcat
+###add this role inside install.yml
+nano install.yml
+---
+-
+  hosts: ubuntu
+  roles:
+    - jdk
+    - user
+
+ 
