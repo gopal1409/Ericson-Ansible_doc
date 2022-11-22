@@ -26,4 +26,10 @@ apt install tree
       - jdk
   ###now we will execute the role using install.yml
   ansible-playbook install.yml
-
+  
+  ####we will import install-jdk.yml main.yml
+  nano jdk/tasks/main.yml
+  ---
+  - import_tasks: install-jdk.yml
+  ###then re run the playbook
+ansible-playbook install.yml
