@@ -1,0 +1,12 @@
+ 351  cd Erricson-Nov_ansible_manifest/
+  352  ls
+  353  ansible-playbook install.yml
+
+  355  ansible-vault encrypt install.yml
+  356  cat install.yml
+  357  ansible-playbook install.yml
+
+  359  ansible-playbook install.yml --ask-vault-pass
+  360  cat install.yml
+  361  ansible-vault decrypt install.yml
+  362  cat install.yml
