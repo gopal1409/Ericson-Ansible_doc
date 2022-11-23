@@ -44,4 +44,7 @@ log_path = /root/Erricson-Nov_ansible_manifest/logfile
 ###how to ping the host and graph
   358  ansible all -m ping
   359  ansible-inventory --graph
-###how to get the
+###how to get the tag instance
+359  ansible-inventory --graph
+###from the tage you can ping it
+ansible aws_ec2 -m ping
