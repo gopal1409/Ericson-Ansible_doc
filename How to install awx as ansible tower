@@ -67,6 +67,6 @@ chmod -R 777  /var/lib/rancher/k3s/storage/*
  333  kubectl delete pods -l "app.kubernetes.io/managed-by=awx-operator"
 kubectl get pvx
 ls /var/lib/rancher/k3s/storage/
-kubectl -n aws logs deploy/awx
+kubectl -n awx logs deploy/awx
 ##3finally get the password
  kubectl get secret awx-admin-password -o go-template='{{range $k,$v := .data}}{{printf "%s: " $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{"\n"}}{{end}}'
