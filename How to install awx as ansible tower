@@ -1,0 +1,57 @@
+ 31  curl -sfL https://get.k3s.io | sudo bash -
+   32  sudo chmod 644 /etc/rancher/k3s/k3s.yaml
+   33  kubectl get nodes
+   34  sudo apt update
+   35  sudo apt install git build-essential
+   36  sudo apt update
+   37  export NAMESPACE=awx
+   38  kubectl config set-context --current --namespace=$NAMESPACE
+   39  cd awx-operator/
+   40  sudo apt install curl jq
+   41  RELEASE_TAG=`curl -s https://api.github.com/repos/ansible/awx-operator/releases/latest | grep tag_name | cut -d '"' -f 4`
+   42  echo $RELEASE_TAG
+   43  kubectl logs -f deployments/awx-operator-controller-manager -c awx-manager
+   44  kubectl get pods -l "app.kubernetes.io/managed-by=awx-operator"
+   45  kubectl logs -f deployments/awx-operator-controller-manager -c awx-manager
+####install the play
+cat <<EOF | kubectl create -f -
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: static-data-pvc
+  namespace: awx
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-path
+  resources:
+    requests:
+      storage: 5Gi
+EOF
+#####create a file for mapping the volume
+ nano awx-deploy.yml
+---
+apiVersion: awx.ansible.com/v1beta1
+kind: AWX
+metadata:
+  name: awx
+spec:
+  service_type: nodeport
+  projects_persistence: true
+  projects_storage_access_mode: ReadWriteOnce
+  web_extra_volume_mounts: |
+    - name: static-data
+      mountPath: /var/lib/projects
+  extra_volumes: |
+    - name: static-data
+      persistentVolumeClaim:
+        claimName: static-data-pvc
+#####apply the yaml firl
+ kubectl apply -f awx-deploy.yml
+#####check the logs
+ls -lh /var/lib/rancher/k3s/storage/ | grep awx-postgres-0
+kubectl logs -f deployments/awx-operator-controller-manager -c awx-manager
+ls -lh /var/lib/rancher/k3s/storage/ | grep awx-postgres-0
+ chmod -R 777  /var/lib/rancher/k3s/storage/*
+##3finally get the password
+ kubectl get secret awx-admin-password -o go-template='{{range $k,$v := .data}}{{printf "%s: " $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{"\n"}}{{end}}'
