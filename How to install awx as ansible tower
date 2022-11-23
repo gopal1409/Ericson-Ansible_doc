@@ -5,7 +5,7 @@
    35  sudo apt install git build-essential
    36  sudo apt update
    rm aws-operator
-   git clone https://github.com/ansible/aws-operator.git
+   git clone https://github.com/ansible/awx-operator.git
    37  export NAMESPACE=awx
    287  kubectl create ns ${NAMESPACE}
   
