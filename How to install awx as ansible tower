@@ -65,7 +65,7 @@ kubectl logs -f deployments/awx-operator-controller-manager -c awx-manager
 ls -lh /var/lib/rancher/k3s/storage/ | grep awx-postgres-0
 chmod -R 777  /var/lib/rancher/k3s/storage/*
  333  kubectl delete pods -l "app.kubernetes.io/managed-by=awx-operator"
-kubectl get pvx
+kubectl get pvc
 ls /var/lib/rancher/k3s/storage/
 kubectl -n awx logs deploy/awx
 ##3finally get the password
