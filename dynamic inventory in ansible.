@@ -48,3 +48,17 @@ log_path = /root/Erricson-Nov_ansible_manifest/logfile
 359  ansible-inventory --graph
 ###from the tage you can ping it
 ansible aws_ec2 -m ping
+###how to use the dynamic inventory in the playbook
+ 364  nano ec2play.yml
+ ---
+- name: ansible test play
+  gather_facts: false
+  hosts: tags_Name_red
+  tasks:
+    - name: Run a shell command
+      command: echo "Hello World"
+
+  365  ansible-inventory --graph
+  366  nano ec2play.yml
+  367  ansible-playbook ec2play.yml
+
