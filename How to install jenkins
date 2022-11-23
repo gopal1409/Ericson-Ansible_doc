@@ -6,3 +6,5 @@
   394  apt install jenkins
   395  systemctl status jenkins
   apt install maven
+  ###3jenkins intial installation password
+  398  cat /var/lib/jenkins/secrets/initialAdminPassword
