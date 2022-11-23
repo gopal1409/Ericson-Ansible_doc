@@ -4,3 +4,13 @@
   367  sudo ./aws/install
 aws --version
 ###configure the access key and secret access key
+###you can find the access key and secret access key from the excel sheet
+root@ansiblemaster:~/Erricson-Nov_ansible_manifest# aws configure
+AWS Access Key ID [****************XIR4]:
+AWS Secret Access Key [****************lHnq]:
+Default region name [None]: us-east-1
+Default output format [None]: json
+
+######
+377  apt install python3-pip
+  378  pip install boto
