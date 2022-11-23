@@ -5,6 +5,8 @@
    35  sudo apt install git build-essential
    36  sudo apt update
    37  export NAMESPACE=awx
+   287  kubectl create ns ${NAMESPACE}
+
    38  kubectl config set-context --current --namespace=$NAMESPACE
    mkdir awx-operator
    39  cd awx-operator/
