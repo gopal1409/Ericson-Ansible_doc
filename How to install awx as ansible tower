@@ -4,15 +4,21 @@
    34  sudo apt update
    35  sudo apt install git build-essential
    36  sudo apt update
+   rm aws-operator
+   git clone https://github.com/ansible/aws-operator.git
    37  export NAMESPACE=awx
    287  kubectl create ns ${NAMESPACE}
-
+  
    38  kubectl config set-context --current --namespace=$NAMESPACE
-   mkdir awx-operator
+  
    39  cd awx-operator/
    40  sudo apt install curl jq
    41  RELEASE_TAG=`curl -s https://api.github.com/repos/ansible/awx-operator/releases/latest | grep tag_name | cut -d '"' -f 4`
    42  echo $RELEASE_TAG
+   git checkout $RELEASE_TAG
+   37  export NAMESPACE=awx
+   make deploy
+   kubectl get pods
    43  kubectl logs -f deployments/awx-operator-controller-manager -c awx-manager
    44  kubectl get pods -l "app.kubernetes.io/managed-by=awx-operator"
    45  kubectl logs -f deployments/awx-operator-controller-manager -c awx-manager
@@ -31,6 +37,8 @@ spec:
     requests:
       storage: 5Gi
 EOF
+####check the pvc
+kubectl get pvc -n awx
 #####create a file for mapping the volume
  nano awx-deploy.yml
 ---
@@ -55,6 +63,10 @@ spec:
 ls -lh /var/lib/rancher/k3s/storage/ | grep awx-postgres-0
 kubectl logs -f deployments/awx-operator-controller-manager -c awx-manager
 ls -lh /var/lib/rancher/k3s/storage/ | grep awx-postgres-0
- chmod -R 777  /var/lib/rancher/k3s/storage/*
+chmod -R 777  /var/lib/rancher/k3s/storage/*
+ 333  kubectl delete pods -l "app.kubernetes.io/managed-by=awx-operator"
+kubectl get pvx
+ls /var/lib/rancher/k3s/storage/
+kubectl -n aws logs deploy/awx
 ##3finally get the password
  kubectl get secret awx-admin-password -o go-template='{{range $k,$v := .data}}{{printf "%s: " $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{"\n"}}{{end}}'
