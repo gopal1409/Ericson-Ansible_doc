@@ -9,8 +9,13 @@ pipeline {
         }
         stage('mvn compile') {
             steps {
-                //sh "python app.py"
                 sh "mvn -B -DskipTests clean package"
+            }
+        }
+        stage('unit test') {
+            steps {
+        
+                sh "mvn test"
             }
         }
     }
