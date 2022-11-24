@@ -1,0 +1,16 @@
+##3lets version our code
+  474  ls
+  475  git clone https://github.com/gopal1409/springboot-chat-app.git
+  476  ls
+  477  cd springboot-chat-app/
+  478  git config --global user.name "gopal"
+  479  git config --global user.email "gopal1409@gmail.com"
+  480  rm -rf .git
+  481  git init
+  482  git add .
+  483  git commit -m "spring chat app"
+  484  git log
+####upload the same in github
+###to do the same we will get the key which we have generated during ansible exercise(ssh-keygen -t rsa)
+cat /root/.ssh/id_rsa.pub
+#####then create username and password in github
