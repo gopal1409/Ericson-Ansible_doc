@@ -4,7 +4,13 @@ pipeline {
     stages {
         stage('code from scm') {
             steps {
-                sh "echo getting code from scm"
+                git credentialsId: 'git-pvtkey', url: 'git@github.com:gopal1409/eric-chat-app.git'
+            }
+        }
+        stage('mvn compile') {
+            steps {
+                //sh "python app.py"
+                sh "mvn -B -DskipTests clean package"
             }
         }
     }
