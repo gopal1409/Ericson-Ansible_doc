@@ -1,0 +1,26 @@
+615  mkdir multi
+  616  cd multi/
+  617  nano Jenkinsfile
+  618  git init
+  619  git add .
+  620  git commit -m "Jenkins file for ci pipeline"
+  621  git remote add origin https://github.com/gopal1409/eric-multi.git
+ 
+  62  626  git remote add origin git@github.com:gopal1409/eric-multi.git
+  627  git push origin master
+  628  clear
+  629  git branch docker
+  630  git checkout docker
+  631  nano Jenkinsfile
+  632  vi Jenkinsfile
+  633  git add .
+  634  git commit -m "docker pipleine"
+  635  git push origin docker
+  636  git check master
+  637  git checkout master
+  638  git branch ansible
+  639  nano Jenkinsfile
+  640  vi Jenkinsfile
+  641  git add .
+  642  git commit -m "ansible pipeline"
+  643  git push origin ansible
