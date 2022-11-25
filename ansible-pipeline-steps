@@ -3,6 +3,9 @@
   561  cd ansible/
   562  touch ansible.cfg
 ####put this content
+####create a file
+nano ansible.cfg
+#############
 [defaults]
 inventory = dev.inv
 forks = 5
