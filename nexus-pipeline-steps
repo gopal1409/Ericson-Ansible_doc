@@ -16,3 +16,9 @@ ENTRYPOINT ["java","-jar","/application.jar"]
  529  apt install docker.io
   530  docker --version
   531  usermod -aG docker jenkins
+####how to add docker insecure registry
+nano /etc/docker/daemon.json
+###inside this file
+{
+  "insecure-registries" : ["44.205.13.75:8081"]
+}
