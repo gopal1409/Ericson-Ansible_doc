@@ -12,4 +12,7 @@ ENTRYPOINT ["java","-jar","/application.jar"]
   524  git commit -m "docker file upload"
   525  git push
   526  git push origin master
-##########
+##########we need to install docker
+ 529  apt install docker.io
+  530  docker --version
+  531  usermod -aG docker jenkins
