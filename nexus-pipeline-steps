@@ -22,3 +22,6 @@ nano /etc/docker/daemon.json
 {
   "insecure-registries" : ["44.205.13.75:8081"]
 }
+###to effect the change
+systemctl restart docker
+docker info
