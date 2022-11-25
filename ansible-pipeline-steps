@@ -71,12 +71,7 @@ nano tomcat.yml
           state: started 
           enabled: yes 
         when: ansible_service_mgr == 'systemd'
-      - name: check the status 
-        uri:
-          url: http://{{inventory_host}}:8181
-          method: GET 
-          timeout: 20
-          status_code: 200
+     
          
         ########
         ###come out of the directory and upload the content in git hub
