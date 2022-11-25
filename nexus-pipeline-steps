@@ -1,0 +1,15 @@
+ 517  cd springboot-chat-app/
+  518  ls
+  519  nano dockerfile
+###put this content inside the docker file
+FROM openjdk:20-slim-buster
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} application.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/application.jar"]
+#####upload the code in github
+ 523  git add .
+  524  git commit -m "docker file upload"
+  525  git push
+  526  git push origin master
+##########
