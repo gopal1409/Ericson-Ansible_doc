@@ -27,7 +27,7 @@ pipeline {
             steps {
                script {
                    // This step should not normally be used in your script. Consult the inline help for details.
-                      docker.withRegistry('44.205.13.75:8085',registryCredential) {
+                      docker.withRegistry('http://44.205.13.75:8085',registryCredential) {
                        dockerImage.push()
                      }
                }
