@@ -85,3 +85,18 @@ nano tomcat.yml
   573  git commit -m "ansible play"
 
   575  git push origin master
+  ###add template folder
+   588  cd springboot-chat-app/
+  589  cd ansible/
+  590  ls
+  591  mkdir templates
+  592  cd templates/
+###create the tomcat.service.j2
+ 593  nano tomcat.service.j2
+#####
+cd ..
+cd ..
+ 595  git add .
+  596  git commit -m "added template folder"
+  597  git push origin master
+
