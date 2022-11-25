@@ -1,0 +1,16 @@
+pipeline {
+    agent any 
+    stages {
+        stage ('scm') {
+            steps {
+            //change the below line from your previous job
+                git credentialsId: 'git-pvtkey', url: 'git@github.com:gopal1409/eric-chat-app.git'
+            }
+        }
+        stage ('build') {
+            steps {
+               sh 'mvn clean package'
+            }
+        }
+    }
+}
